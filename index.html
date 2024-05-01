@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar Formulário</title>
+</head>
+<body>
+  <h2>Enviar Formulário</h2>
+  <form action="/usuario" method="post">
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" name="nome" required><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    
+    <label for="senha">Senha:</label><br>
+    <input type="password" id="senha" name="senha" required><br>
+    
+    <label for="dataNasc">Data de Nascimento:</label><br>
+    <input type="date" id="dataNasc" name="dataNasc" required><br>
+    
+    <label for="genero">Gênero:</label><br>
+    <select id="genero" name="genero" required>
+      <option value="masculino">Masculino</option>
+      <option value="feminino">Feminino</option>
+      <option value="outro">Outro</option>
+    </select><br>
+    
+    <label for="uf">UF:</label><br>
+    <input type="text" id="uf" name="uf" required><br>
+    
+    <label for="cidade">Cidade:</label><br>
+    <input type="text" id="cidade" name="cidade" required><br>
+    
+    <label for="telefone">Telefone:</label><br>
+    <input type="tel" id="telefone" name="telefone" required><br>
+    
+    <label for="cid">CID:</label><br>
+    <input type="text" id="cid" name="cid" required><br>
+    
+    <input type="submit" value="Enviar">
+  </form>
+  <script src="index.js"></script>
+</body>
+
+</html>
