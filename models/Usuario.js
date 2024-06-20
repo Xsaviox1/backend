@@ -2,14 +2,30 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-const usuarioSchema = new mongoose.Schema({
+const humorSchema = new Schema({
+    humorAtual: {
+        type: String
+    },
+    humorTexto: {
+        type: String
+    },
+    humorAudio: {
+        type: String
+    },
+    humorAlteracao: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const usuarioSchema = new Schema({
     nome: {
         type: String,
-        required: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     senha: {
         type: String,
@@ -17,33 +33,28 @@ const usuarioSchema = new mongoose.Schema({
     },
     dataNasc: {
         type: String,
-        required: true
     },
     genero: {
-        type: String,
-        required: true
+        type: String
     },
     uf: {
-        type: String,
-        required: true
+        type: String
     },
     cidade: {
-        type: String,
-        required: true
+        type: String
     },
     telefone: {
-        type: String,
-        required: true
+        type: String
     },
     cid: {
-        type: String,
-        required: true
+        type: String
     },
+    humor: [humorSchema],
     dataCriacao: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
     
-})
+});
 
-export default mongoose.model("Usuario",usuarioSchema)
+export default model("Usuario", usuarioSchema);
