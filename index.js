@@ -51,6 +51,7 @@ app.delete("/usuario/:id", async (request, response) => {
 /*Se o email já existir ele vai dar erro */
 app.post("/usuario/tela1", async (request, response) => {
     try {
+        console.log("sinal de vida")
         const { email, senha } = request.body;
 
         // Verifica se o email já está cadastrado
@@ -141,7 +142,36 @@ app.post("/usuario/:id/humor", async (request, response) => {
     }
 });
 
+app.post("/usuario/humor", async (req, res) => {
+    try {
+      const { humorTexto } = req.body;
+  
+      // Cria uma nova entrada de humor no banco de dados
+      const novaEntradaHumor = { humorTexto };
+      const usuario = await Usuario.create(novaEntradaHumor);
+  
+      res.status(200).json(usuario);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  });
 
+  app.post("/login", async (req, res) => {
+    try {
+        const { email, senha } = req.body;
+        console.log("vida")
+        // Encontrar o usuário pelo e-mail
+        const usuario = await Usuario.findOne({ email });
+        if (!usuario || usuario.senha !== senha) {
+            return res.status(401).json({ error: "Email ou senha incorretos" });
+        }
+
+        // Sucesso no login
+        return res.status(200).json({ message: "Login bem-sucedido", usuario });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
 
 
 
